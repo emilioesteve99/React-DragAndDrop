@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { BffHttpService } from "../../services/BffHttp.service";
 import { CategoriesContextType } from "./Categories.context";
 import { CategoriesContext } from "./Categories.context";
 
@@ -12,8 +13,8 @@ export const CategoriesProvider = (props: {children: any}) => {
 
     useEffect(() => {
         const fetchCategories = async () => {
-            const response = await (await fetch(`${baseUrl}getCategories?verticalId=4`)).json();
-            setCategories(response.data.categories);
+            const categories = await BffHttpService.getVerticalCategories(4);
+            setCategories(categories);
         }
         fetchCategories();
     }, []);

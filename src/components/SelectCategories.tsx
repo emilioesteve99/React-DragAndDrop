@@ -1,7 +1,6 @@
 import { CategoriesContext, useCategoriesContext } from "../context/categories/Categories.context"
 import { useProductsContext } from "../context/products/Products.context"
-
-const baseUrl = 'http://localhost:4100/api/pmi/'
+import { BffHttpService } from "../services/BffHttp.service";
 
 export const SelectCategories = () => {
 
@@ -12,8 +11,8 @@ export const SelectCategories = () => {
         event.preventDefault();
         const fetchProducts = async () => {
             const categoryId = Number(event.target.value);
-            const response = await (await fetch(`${baseUrl}getCategoryProducts?categoryId=${categoryId}`)).json();
-            setProducts(response.data.products);
+            const products = await BffHttpService.getCategoryProducts(categoryId);
+            setProducts(products);
             setCurrentCategory(categories.find(category => category.id === categoryId));
         }
         fetchProducts();
