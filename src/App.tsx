@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.scss';
 import { CategoriesProvider } from './context/categories/Categories.provider';
 import { ProductsProvider } from './context/products/Products.provider';
 import { SelectCategories } from './components/SelectCategories';

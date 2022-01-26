@@ -4,8 +4,6 @@ import { BffHttpService } from "../../services/BffHttp.service";
 import { CategoriesContextType } from "./Categories.context";
 import { CategoriesContext } from "./Categories.context";
 
-const baseUrl = 'http://localhost:4100/api/pmi/'
-
 export const CategoriesProvider = (props: { children: any }) => {
 
     const [categories, setCategories] = useState([]);
