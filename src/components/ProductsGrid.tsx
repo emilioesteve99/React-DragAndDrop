@@ -4,9 +4,6 @@ import { ProductCard } from "./ProductCard";
 import { ProductType } from "../type/Product";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { Card } from "../dnd/Card";
-
-
 
 export const ProductsGrid = (props: { children?: any }) => {
 
