@@ -1,3 +1,7 @@
+import { CategoryType } from "../type/Category";
+import { CategoryCombinationActiveType } from "../type/CategoryCombinationActive";
+import { ProductType } from "../type/Product";
+
 export class BffHttpService {
 
     private static baseUrl = 'http://localhost:4100/api/';
@@ -17,21 +21,33 @@ export class BffHttpService {
         }
     }
 
-    public static async getVerticalCategories (verticalId: number) {
+    public static async getVerticalCategories (verticalId: number): Promise<CategoryType[]> {
         try {
             const response = await this.request(`pmi/getCategories?verticalId=${verticalId}`, 'GET');
             return response.data.categories;
         } catch (error) {
             console.log(error);
+            return [];
         }
     }
 
-    public static async getCategoryProducts (categoryId: number) {
+    public static async getCategoryProducts (categoryId: number): Promise<ProductType[]> {
         try {
             const response = await this.request(`pmi/getCategoryProducts?categoryId=${categoryId}`, 'GET');
             return response.data.products;
         } catch (error) {
             console.log(error);
+            return [];
+        }
+    }
+
+    public static async getCategorySortConfiguration (categoryId: number): Promise<CategoryCombinationActiveType[]> {
+        try {
+            const reponse = await this.request(`pmi/getCategorySortConfiguration?categoryId=${categoryId}`, 'GET');
+            return reponse.data.categorySort;
+        } catch (error) {
+            console.log(error);
+            return [];
         }
     }
 

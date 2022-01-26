@@ -6,10 +6,9 @@ import { CategoriesContext } from "./Categories.context";
 
 const baseUrl = 'http://localhost:4100/api/pmi/'
 
-export const CategoriesProvider = (props: {children: any}) => {
+export const CategoriesProvider = (props: { children: any }) => {
 
     const [categories, setCategories] = useState([]);
-    const [currentCategory, setCurrentCategory] = useState(null);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -18,20 +17,16 @@ export const CategoriesProvider = (props: {children: any}) => {
         }
         fetchCategories();
     }, []);
-    
+
     const context: CategoriesContextType = {
         categories,
         setCategories,
-        currentCategory,
-        setCurrentCategory
     }
 
     return (
-        <>
-            <CategoriesContext.Provider value={context}>
-                {props.children}
-            </CategoriesContext.Provider>
-        </>
+        <CategoriesContext.Provider value={context}>
+            {props.children}
+        </CategoriesContext.Provider>
     )
 
 }

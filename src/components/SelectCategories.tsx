@@ -1,19 +1,34 @@
 import { CategoriesContext, useCategoriesContext } from "../context/categories/Categories.context"
+import { useCurrentCategoryContext } from "../context/categories/CurrentCategory.context";
 import { useProductsContext } from "../context/products/Products.context"
 import { BffHttpService } from "../services/BffHttp.service";
 
 export const SelectCategories = () => {
 
     const { setProducts } = useProductsContext();
-    const { setCurrentCategory, categories } = useCategoriesContext();
+    const { categories } = useCategoriesContext();
+    const { setCurrentCategory } = useCurrentCategoryContext();
 
     const handleCategoriesSelectChange = (event: any) => {
         event.preventDefault();
         const fetchProducts = async () => {
             const categoryId = Number(event.target.value);
             const products = await BffHttpService.getCategoryProducts(categoryId);
-            setProducts(products);
             setCurrentCategory(categories.find(category => category.id === categoryId));
+            const categoriesCombinationsActive = await BffHttpService.getCategorySortConfiguration(categoryId);
+            const activeProducts = [];
+            const inactiveProducts = [];
+            for (const product of products) {
+                let isActiveProduct = false;
+                for (const { combinationId } of categoriesCombinationsActive) {
+                    if (product.selectedCombinationId === combinationId) {
+                        activeProducts.push(product);
+                        isActiveProduct = true;
+                    }
+                }
+                if (!isActiveProduct) inactiveProducts.push(product);
+            }
+            setProducts([... activeProducts, ...inactiveProducts]);
         }
         fetchProducts();
     }
