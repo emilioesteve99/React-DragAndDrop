@@ -1,6 +1,5 @@
 import { useProductsContext } from "../context/products/Products.context"
 import { ProductCard } from "./ProductCard";
-// import { DragDropContext, Droppable, Draggable, DropResult, ResponderProvided } from 'react-beautiful-dnd';
 import { ProductType } from "../type/Product";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -18,12 +17,6 @@ export const ProductsGrid = (props: { children?: any }) => {
         result.splice(endIndex, 0, removed);
         return result;
     }
-
-    // const handleProductsDragEnd = (result: DropResult, _provided: ResponderProvided) => {
-    //     if (!result?.destination) return;
-    //     if (result.source.index === result.destination.index) return;
-    //     setProducts(moveElement(products, result.source.index, result.destination.index));
-    // }
 
     const handleMoveCard = (dragIndex, hoverIndex) => {
         const movedList = moveElement(products, dragIndex, hoverIndex);

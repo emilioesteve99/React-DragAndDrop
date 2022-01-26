@@ -13,7 +13,7 @@ function App() {
       <CurrentCategoryProvider>
         <ProductsProvider>
           <SelectCategories></SelectCategories>
-          <ProductsGrid></ProductsGrid>
+          <ProductsGrid ></ProductsGrid>
         </ProductsProvider>
       </CurrentCategoryProvider>
     </CategoriesProvider>
