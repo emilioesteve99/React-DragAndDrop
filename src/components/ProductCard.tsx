@@ -1,8 +1,8 @@
 import { ProductType } from "../type/Product";
 
-export const ProductCard = ({product}: PropsType) => {
+export const ProductCard = ({product, dragHandleProps, draggableProps, draggableInnerRef}: PropsType) => {
     return (
-        <div>
+        <div {... dragHandleProps} {... draggableProps} ref={draggableInnerRef}>
             <h2>{product.name}</h2>
         </div>
     )
@@ -10,4 +10,7 @@ export const ProductCard = ({product}: PropsType) => {
 
 type PropsType = {
     product: ProductType;
+    draggableProps: any;
+    dragHandleProps: any;
+    draggableInnerRef: any;
 }
