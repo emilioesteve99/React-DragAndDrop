@@ -1,3 +1,4 @@
+import { DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps } from "react-beautiful-dnd";
 import { ProductType } from "../type/Product";
 
 export const ProductCard = ({product, dragHandleProps, draggableProps, draggableInnerRef}: PropsType) => {
@@ -10,7 +11,7 @@ export const ProductCard = ({product, dragHandleProps, draggableProps, draggable
 
 type PropsType = {
     product: ProductType;
-    draggableProps: any;
-    dragHandleProps: any;
-    draggableInnerRef: any;
+    draggableProps: DraggableProvidedDraggableProps;
+    dragHandleProps: DraggableProvidedDragHandleProps;
+    draggableInnerRef: (element?: HTMLElement | null) => any;
 }

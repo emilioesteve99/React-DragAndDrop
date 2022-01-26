@@ -8,8 +8,6 @@ export const SelectCategories = () => {
     const { setProducts } = useProductsContext();
     const { setCurrentCategory, categories } = useCategoriesContext();
 
-    console.log('entra');
-
     const handleCategoriesSelectChange = (event: any) => {
         event.preventDefault();
         const fetchProducts = async () => {
