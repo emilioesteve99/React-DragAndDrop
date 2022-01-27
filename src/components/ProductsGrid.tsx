@@ -8,7 +8,7 @@ import { moveProduct } from "../utils/moveProduct";
 export const ProductsGrid = (props: { children?: any }) => {
   const { products, setProducts } = useProductsContext();
   if (!products?.length) {
-    return <div>No hay productos</div>;
+    return <div className={styles.noProducts}>No hay productos 😢</div>;
   }
 
   // const handleProductsDragEnd = (result: DropResult, _provided: ResponderProvided) => {

@@ -1,4 +1,3 @@
-import styles from "./SelectCategories.module.scss";
 import {
   CategoriesContext,
   useCategoriesContext,
@@ -6,6 +5,8 @@ import {
 import { useCurrentCategoryContext } from "../context/categories/CurrentCategory.context";
 import { useProductsContext } from "../context/products/Products.context";
 import { BffHttpService } from "../services/BffHttp.service";
+
+import { Dropdown } from "primereact/dropdown";
 
 export const SelectCategories = () => {
   const { setProducts } = useProductsContext();
@@ -15,7 +16,7 @@ export const SelectCategories = () => {
   const handleCategoriesSelectChange = (event: any) => {
     event.preventDefault();
     const fetchProducts = async () => {
-      const categoryId = Number(event.target.value);
+      const categoryId = Number(event.value.id);
       const products = await BffHttpService.getCategoryProducts(categoryId);
       setCurrentCategory(
         categories.find((category) => category.id === categoryId)
@@ -39,25 +40,27 @@ export const SelectCategories = () => {
     fetchProducts();
   };
 
+  const countryOptionTemplate = (option) => {
+    return (
+      <div className="item">
+        <div>
+          {option.id} {option.name}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <select
-      defaultValue={"Selecciona una categoría"}
-      name="Categorías"
-      id="categories"
+    <Dropdown
+      value={categories}
+      options={categories}
       onChange={handleCategoriesSelectChange}
-      className={styles.select}
-    >
-      <option disabled>{"Selecciona una categoría"}</option>
-      {categories.map((category) => {
-        return (
-          <option
-            value={category.id}
-            key={category.id}
-            id={category.id.toString()}
-          >{`${category.id}: ${category.name}`}</option>
-        );
-      })}
-    </select>
+      optionLabel="name"
+      filter
+      filterBy="name"
+      placeholder="Selecciona una categoría:"
+      itemTemplate={countryOptionTemplate}
+    />
   );
 };
 
