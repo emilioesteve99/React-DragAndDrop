@@ -93,6 +93,13 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
       style={{ ...style, opacity }}
       data-handler-id={handlerId}
     >
+      <img
+        className={styles.imgItem}
+        src={`https://www.sklum.com/es/${product.images.coverId}-${
+          product.is2xh ? "h_754x540" : "pdp_vertical"
+        }/${product.rewrite}.jpg`}
+        alt={product.name}
+      ></img>
       <h2>{product.name}</h2>
     </div>
   );
