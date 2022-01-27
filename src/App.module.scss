@@ -1,38 +1,14 @@
 body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #fd6e6e;
-  }
-  
-  .app {
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    color: #2d3233;
-  }
-  
-  .grid {
-    /* border: 1px dotted pink; */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-  }
-  
-  .grid-item {
-    color: rgb(250, 82, 52);
-    box-shadow: 0px 2px 4px #4a4c4e;
-    border-radius: 5px;
-    padding: 0.3em 0.5em;
-    background-color: whitesmoke;
-    text-align: center;
-    margin: 5px;
-    border: 2px solid transparent;
-  }
-  
-  .grid-item:focus {
-    outline: none;
-    border: 2px solid #4a9af5;
-  }
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #fd6e6e;
+}
+
+.app {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #2d3233;
+}
