@@ -32,7 +32,6 @@ export const ProductsGrid = (props: { children?: any }) => {
     const movedList = moveElement(products, dragIndex, hoverIndex);
     setProducts(movedList);
   };
-
   return (
     <div className={styles.grid}>
       <DndProvider backend={HTML5Backend}>

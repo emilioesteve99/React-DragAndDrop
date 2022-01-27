@@ -90,17 +90,22 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
     <div
       ref={ref}
       className={styles.gridItem}
-      style={{ ...style, opacity }}
+      style={{ ...style, opacity, gridColumn: product.is2xh ? "span 2" : "" }}
       data-handler-id={handlerId}
     >
-      <img
-        className={styles.imgItem}
-        src={`https://www.sklum.com/es/${product.images.coverId}-${
-          product.is2xh ? "h_754x540" : "pdp_vertical"
-        }/${product.rewrite}.jpg`}
-        alt={product.name}
-      ></img>
-      <h2>{product.name}</h2>
+      <div>
+        <img
+          className={styles.imgItem}
+          src={`https://www.sklum.com/es/${product.images.coverId}-${
+            product.is2xh ? "h_754x540" : "pdp_vertical"
+          }/${product.rewrite}.jpg`}
+          alt={product.name}
+        ></img>
+
+        <div>
+          <span>{product.name}</span>
+        </div>
+      </div>
     </div>
   );
 };
