@@ -126,7 +126,7 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
         </div>
 
         <span className={styles.titlePosition}>
-          Posición del producto en la lista:
+          Posición del producto en la lista: {index}
         </span>
 
         <div className={styles.gridItemExtra}>

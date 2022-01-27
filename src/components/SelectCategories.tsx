@@ -11,7 +11,7 @@ import { Dropdown } from "primereact/dropdown";
 export const SelectCategories = () => {
   const { setProducts } = useProductsContext();
   const { categories } = useCategoriesContext();
-  const { setCurrentCategory } = useCurrentCategoryContext();
+  const { currentCategory, setCurrentCategory } = useCurrentCategoryContext();
 
   const handleCategoriesSelectChange = (event: any) => {
     event.preventDefault();
@@ -50,12 +50,31 @@ export const SelectCategories = () => {
     );
   };
 
+  const categoryDefaultSelect = (option, props) => {
+    if (option) {
+      return (
+        <div>
+          <div>{`${option.id}: ${option.name}`}</div>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div>{'Selecciona una categoria'}</div>
+        </div>
+      )
+    }
+  }
+
+  console.log(currentCategory);
+
   return (
     <Dropdown
-      value={categories}
+      value={currentCategory}
       options={categories}
       onChange={handleCategoriesSelectChange}
       optionLabel="name"
+      valueTemplate={categoryDefaultSelect}
       filter
       filterBy="name"
       placeholder="Selecciona una categoría:"
