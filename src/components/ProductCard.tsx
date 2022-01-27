@@ -6,6 +6,8 @@ import { XYCoord } from "dnd-core";
 import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { useProductsContext } from "../context/products/Products.context";
+import { moveProduct } from "../utils/moveProduct";
 
 const style = {
   padding: "10px",
@@ -17,7 +19,8 @@ const style = {
 
 export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
   const ref = useRef(null);
-  const [value1, setValue1] = useState("");
+  const moveInputRef = useRef(null);
+  const {products, setProducts} = useProductsContext();
 
   const [{ handlerId }, drop] = useDrop({
     accept: "PRODUCT_CARD",
@@ -89,8 +92,14 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
 
-  const handleMovePosition = () => {
-    console.log(value1);
+  const handleMoveButtonClick = (event: any) => {
+    event.preventDefault();
+    const moveInput = moveInputRef.current.value;
+    if(!moveInput || moveInput ==='' || isNaN(moveInput) || moveInput > products.length) return;
+    // TODO: meter en el array entre el index de moveInput y el index el producto en el contexto de productos
+    const movedList = products.filter(p => p.id !== product.id);
+    movedList.splice(moveInput - 1, 0, product);
+    setProducts(movedList);
   };
 
   return (
@@ -121,14 +130,11 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
         </span>
 
         <div className={styles.gridItemExtra}>
-          <InputText
-            value={value1}
-            onChange={(e) => setValue1(e.target.value)}
-          />
+          <InputText ref={moveInputRef}/>
           <Button
             label="Mover"
             className="p-button-raised"
-            onClick={handleMovePosition}
+            onClick={handleMoveButtonClick}
           />
         </div>
       </div>
