@@ -8,7 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 export const ProductsGrid = (props: { children?: any }) => {
   const { products, setProducts } = useProductsContext();
   if (!products?.length) {
-    return <div>No hay productos</div>;
+    return <div className={styles.noProducts}>No hay productos 😢</div>;
   }
 
   console.log(products);
