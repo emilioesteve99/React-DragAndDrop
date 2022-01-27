@@ -1,11 +1,9 @@
 import styles from "./ProductsGrid.module.scss";
 import { useProductsContext } from "../context/products/Products.context";
 import { ProductCard } from "./ProductCard";
-// import { DragDropContext, Droppable, Draggable, DropResult, ResponderProvided } from 'react-beautiful-dnd';
 import { ProductType } from "../type/Product";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Card } from "../dnd/Card";
 
 export const ProductsGrid = (props: { children?: any }) => {
   const { products, setProducts } = useProductsContext();
