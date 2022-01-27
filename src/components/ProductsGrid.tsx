@@ -11,6 +11,8 @@ export const ProductsGrid = (props: { children?: any }) => {
     return <div>No hay productos</div>;
   }
 
+  console.log(products);
+
   const moveElement = (
     productLIst: ProductType[],
     startIndex: number,

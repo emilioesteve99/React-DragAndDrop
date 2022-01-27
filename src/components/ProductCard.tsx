@@ -1,20 +1,23 @@
 // import { DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps } from "react-beautiful-dnd";
 import styles from "./ProductCard.module.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ProductType } from "../type/Product";
 import { XYCoord } from "dnd-core";
 import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
 
 const style = {
-  border: "1px dashed gray",
-  padding: "0.5rem 1rem",
-  marginBottom: ".5rem",
+  padding: "10px",
+  borderRadius: "5px",
+  border: "1px solid #e0e0e0",
   backgroundColor: "white",
   cursor: "move",
 };
 
 export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
   const ref = useRef(null);
+  const [value1, setValue1] = useState("");
 
   const [{ handlerId }, drop] = useDrop({
     accept: "PRODUCT_CARD",
@@ -86,6 +89,10 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
 
+  const handleMovePosition = () => {
+    console.log(value1);
+  };
+
   return (
     <div
       ref={ref}
@@ -94,16 +101,35 @@ export const ProductCard = ({ product, id, index, moveCard }: PropsType) => {
       data-handler-id={handlerId}
     >
       <div>
-        <img
-          className={styles.imgItem}
-          src={`https://www.sklum.com/es/${product.images.coverId}-${
-            product.is2xh ? "h_754x540" : "pdp_vertical"
-          }/${product.rewrite}.jpg`}
-          alt={product.name}
-        ></img>
+        <div className={styles.containerImg}>
+          <img
+            className={styles.imgItem}
+            src={`https://www.sklum.com/es/${product.images.coverId}-${
+              product.is2xh ? "h_754x540" : "pdp_vertical"
+            }/${product.rewrite}.jpg`}
+            alt={product.name}
+          ></img>
+        </div>
 
-        <div>
+        <div className={styles.gridItemInfo}>
           <span>{product.name}</span>
+          <span>{product.stock.message1}</span>
+        </div>
+
+        <span className={styles.titlePosition}>
+          Posición del producto en la lista:
+        </span>
+
+        <div className={styles.gridItemExtra}>
+          <InputText
+            value={value1}
+            onChange={(e) => setValue1(e.target.value)}
+          />
+          <Button
+            label="Mover"
+            className="p-button-raised"
+            onClick={handleMovePosition}
+          />
         </div>
       </div>
     </div>

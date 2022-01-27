@@ -1,12 +1,6 @@
 .gridItem {
-  color: rgb(250, 82, 52);
-  box-shadow: 0px 2px 4px #4a4c4e;
   border-radius: 5px;
-  padding: 0.3em 0.5em;
-  background-color: whitesmoke;
-  text-align: center;
   margin: 5px;
-  border: 2px solid transparent;
 }
 
 .gridItem:focus {
@@ -14,7 +8,41 @@
   border: 2px solid #4a9af5;
 }
 
+.containerImg {
+  margin-bottom: 15px;
+}
+
 .imgItem {
   width: 100%;
   pointer-events: none;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.gridItemInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  span {
+    display: block;
+    padding: 5px 0;
+  }
+}
+
+.gridItemExtra {
+  display: flex;
+
+  input {
+    margin-right: 15px;
+    width: 100px;
+  }
+}
+
+.titlePosition {
+  margin-bottom: 10px;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
 }
