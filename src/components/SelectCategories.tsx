@@ -7,6 +7,7 @@ import { useProductsContext } from "../context/products/Products.context";
 import { BffHttpService } from "../services/BffHttp.service";
 
 import { Dropdown } from "primereact/dropdown";
+import styles from "./SelectCategories.module.scss";
 
 export const SelectCategories = () => {
   const { setProducts } = useProductsContext();
@@ -60,14 +61,15 @@ export const SelectCategories = () => {
     } else {
       return (
         <div>
-          <div>{'Selecciona una categoria'}</div>
+          <div>{"Selecciona una categoria"}</div>
         </div>
-      )
+      );
     }
-  }
+  };
 
   return (
     <Dropdown
+      className={styles.select}
       value={currentCategory}
       options={categories}
       onChange={handleCategoriesSelectChange}

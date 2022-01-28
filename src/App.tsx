@@ -6,6 +6,7 @@ import { SelectCategories } from "./components/SelectCategories";
 import { ProductsGrid } from "./components/ProductsGrid";
 import { CurrentCategoryProvider } from "./context/categories/CurrentCategory.provider";
 import { ProductsTable } from "./components/ProductsTable";
+import { ButtonSendData } from "./components/ButtonSendData";
 
 function App() {
   return (
