@@ -66,8 +66,6 @@ export const SelectCategories = () => {
     }
   }
 
-  console.log(currentCategory);
-
   return (
     <Dropdown
       value={currentCategory}
