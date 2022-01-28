@@ -21,6 +21,7 @@ function App() {
               <SelectCategories></SelectCategories>
               <ButtonSendData></ButtonSendData>
             </div>
+
             <ProductsGrid></ProductsGrid>
           </div>
         </ProductsProvider>
