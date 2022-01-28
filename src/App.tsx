@@ -5,6 +5,7 @@ import { ProductsProvider } from "./context/products/Products.provider";
 import { SelectCategories } from "./components/SelectCategories";
 import { ProductsGrid } from "./components/ProductsGrid";
 import { CurrentCategoryProvider } from "./context/categories/CurrentCategory.provider";
+import { ProductsTable } from "./components/ProductsTable";
 import { ButtonSendData } from "./components/ButtonSendData";
 import { useEffect, useState } from "react";
 
@@ -31,10 +32,6 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   return (
@@ -52,6 +49,9 @@ function App() {
             </div>
 
             <ProductsGrid></ProductsGrid>
+
+            {/* <SelectCategories /> */}
+            <ProductsTable />
           </div>
         </ProductsProvider>
       </CurrentCategoryProvider>

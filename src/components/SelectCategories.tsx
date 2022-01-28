@@ -67,8 +67,6 @@ export const SelectCategories = () => {
     }
   };
 
-  console.log(currentCategory);
-
   return (
     <Dropdown
       className={styles.select}
