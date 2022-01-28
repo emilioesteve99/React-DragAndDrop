@@ -5,6 +5,7 @@ import { ProductsProvider } from "./context/products/Products.provider";
 import { SelectCategories } from "./components/SelectCategories";
 import { ProductsGrid } from "./components/ProductsGrid";
 import { CurrentCategoryProvider } from "./context/categories/CurrentCategory.provider";
+import { ButtonSendData } from "./components/ButtonSendData";
 
 function App() {
   return (
@@ -12,7 +13,14 @@ function App() {
       <CurrentCategoryProvider>
         <ProductsProvider>
           <div className={styles.columnsContainer}>
-            <SelectCategories></SelectCategories>
+            <p className="title">
+              Arrastrar y soltar los productos en la posición que quieras
+              actualizar de la PLP.
+            </p>
+            <div className={styles.containerFilter}>
+              <SelectCategories></SelectCategories>
+              <ButtonSendData></ButtonSendData>
+            </div>
             <ProductsGrid></ProductsGrid>
           </div>
         </ProductsProvider>

@@ -18,3 +18,10 @@ h1 {
   max-width: 1200px;
   margin: 40px auto;
 }
+
+.containerFilter {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
