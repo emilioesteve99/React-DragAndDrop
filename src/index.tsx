@@ -10,7 +10,6 @@ import { ProductTablePage } from "./pages/ProductTablePage";
 import { LoginPage } from "./pages/LoginPage";
 
 export const Home = () => {
-
   const [styleBorder, setStyleBorder] = useState({});
 
   const handleScroll = () => {
@@ -36,24 +35,20 @@ export const Home = () => {
     window.addEventListener("scroll", handleScroll);
   }, []);
 
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route index={true} element={<LoginPage />}/>
-                <Route path="/product-list" >
-                      <Route path="grid" element={<ProductGridPage />}/>
-                      <Route path="table" element={<ProductTablePage />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    )
-
-}
-
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index={true} element={<LoginPage />} />
+        <Route path="/grid" element={<ProductGridPage />} />
+        <Route path="/table" element={<ProductTablePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Home />
-    </React.StrictMode>,
-    document.getElementById("root")
+  <React.StrictMode>
+    <Home />
+  </React.StrictMode>,
+  document.getElementById("root")
 );

@@ -9,24 +9,24 @@ import { ButtonSendData } from "../components/ButtonSendData";
 import { NavigateButton } from "../components/NavigateButton";
 
 export const ProductGridPage = () => {
-    return (
-      <CategoriesProvider>
-        <CurrentCategoryProvider>
-          <ProductsProvider>
-            <div className={styles.columnsContainer}>
-              <p className="title">
-                Arrastrar y soltar los productos en la posición que quieras
-                actualizar de la PLP.
-              </p>
-              <div className={styles.containerFilter}>
-                <SelectCategories></SelectCategories>
-                <ButtonSendData />
-                <NavigateButton path="/product-list/table" label="Vista en tabla"/>
-              </div>
-              <ProductsGrid />
+  return (
+    <CategoriesProvider>
+      <CurrentCategoryProvider>
+        <ProductsProvider>
+          <div className={styles.columnsContainer}>
+            <p className="title">
+              Arrastrar y soltar los productos en la posición que quieras
+              actualizar de la PLP.
+            </p>
+            <div className={styles.containerFilter}>
+              <SelectCategories></SelectCategories>
+              <ButtonSendData />
+              <NavigateButton path="/table" label="Vista en tabla" />
             </div>
-          </ProductsProvider>
-        </CurrentCategoryProvider>
-      </CategoriesProvider>
-    );
-}
+            <ProductsGrid />
+          </div>
+        </ProductsProvider>
+      </CurrentCategoryProvider>
+    </CategoriesProvider>
+  );
+};
