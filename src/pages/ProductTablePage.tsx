@@ -5,24 +5,27 @@ import { ProductsProvider } from "../context/products/Products.provider";
 import { SelectCategories } from "../components/SelectCategories";
 import { CurrentCategoryProvider } from "../context/categories/CurrentCategory.provider";
 import { ProductsTable } from "../components/ProductsTable";
+import { NavigateButton } from "../components/NavigateButton";
+import { ButtonSendData } from "../components/ButtonSendData";
 
 export const ProductTablePage = () => {
-    return (
-      <CategoriesProvider>
-        <CurrentCategoryProvider>
-          <ProductsProvider>
-            <div className={styles.columnsContainer}>
-              <p className="title">
-                Arrastrar y soltar los productos en la posición que quieras
-                actualizar de la PLP.
-              </p>
-              <div className={styles.containerFilter}>
-                <SelectCategories></SelectCategories>
-              </div>
-              <ProductsTable />
+  return (
+    <CategoriesProvider>
+      <CurrentCategoryProvider>
+        <ProductsProvider>
+          <div className={styles.columnsContainer}>
+            <p className="title">
+              Arrastrar y soltar los productos en la posición que quieras
+              actualizar de la PLP.
+            </p>
+            <div className={styles.containerFilter}>
+              <SelectCategories></SelectCategories>
+              <NavigateButton path="/grid" label="Vista de Grid" />
             </div>
-          </ProductsProvider>
-        </CurrentCategoryProvider>
-      </CategoriesProvider>
-    );
-}
+            <ProductsTable />
+          </div>
+        </ProductsProvider>
+      </CurrentCategoryProvider>
+    </CategoriesProvider>
+  );
+};

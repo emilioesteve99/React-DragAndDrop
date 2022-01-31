@@ -4,6 +4,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { useProductsContext } from "../context/products/Products.context";
 import { useRef } from "react";
+import { NavigateButton } from "./NavigateButton";
 
 export const ProductsTable = () => {
   const { products, setProducts } = useProductsContext();
@@ -68,7 +69,7 @@ export const ProductsTable = () => {
   };
 
   if (!products.length) {
-    return <div>{"No hay productos"}</div>;
+    return <div>{"No hay productos 😢"}</div>;
   }
 
   return (
