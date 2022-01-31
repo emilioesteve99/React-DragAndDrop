@@ -5,7 +5,6 @@ import { ProductsProvider } from "../context/products/Products.provider";
 import { SelectCategories } from "../components/SelectCategories";
 import { CurrentCategoryProvider } from "../context/categories/CurrentCategory.provider";
 import { ProductsTable } from "../components/ProductsTable";
-import { ButtonSendData } from "../components/ButtonSendData";
 
 export const ProductTablePage = () => {
     return (

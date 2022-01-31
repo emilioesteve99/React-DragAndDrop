@@ -7,6 +7,7 @@ import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css"; //icons
 import { ProductGridPage } from "./pages/ProductGridPage";
 import { ProductTablePage } from "./pages/ProductTablePage";
+import { LoginPage } from "./pages/LoginPage";
 
 export const Home = () => {
 
@@ -38,7 +39,8 @@ export const Home = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/product-list">
+                <Route index={true} element={<LoginPage />}/>
+                <Route path="/product-list" >
                       <Route path="grid" element={<ProductGridPage />}/>
                       <Route path="table" element={<ProductTablePage />} />
                 </Route>

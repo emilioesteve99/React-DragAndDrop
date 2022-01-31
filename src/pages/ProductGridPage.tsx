@@ -5,9 +5,8 @@ import { ProductsProvider } from "../context/products/Products.provider";
 import { SelectCategories } from "../components/SelectCategories";
 import { ProductsGrid } from "../components/ProductsGrid";
 import { CurrentCategoryProvider } from "../context/categories/CurrentCategory.provider";
-import { ProductsTable } from "../components/ProductsTable";
 import { ButtonSendData } from "../components/ButtonSendData";
-import { useEffect, useState } from "react";
+import { NavigateButton } from "../components/NavigateButton";
 
 export const ProductGridPage = () => {
     return (
@@ -21,7 +20,8 @@ export const ProductGridPage = () => {
               </p>
               <div className={styles.containerFilter}>
                 <SelectCategories></SelectCategories>
-                <ButtonSendData></ButtonSendData>
+                <ButtonSendData />
+                <NavigateButton path="/product-list/table" label="Vista en tabla"/>
               </div>
               <ProductsGrid />
             </div>

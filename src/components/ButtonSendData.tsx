@@ -1,16 +1,13 @@
 import { Button } from "primereact/button";
 import { useProductsContext } from "../context/products/Products.context";
 import { useCurrentCategoryContext } from "../context/categories/CurrentCategory.context";
-
-const baseUrl = "http://localhost:4100";
+import { BffHttpService } from "../services/BffHttp.service";
 
 export const ButtonSendData = () => {
   const { currentCategory } = useCurrentCategoryContext();
   const { products } = useProductsContext();
 
   const handleSendData = () => {
-    console.log(products);
-
     const saveProductsOrder = async () => {
       const dataToSave = {
         categoryId: currentCategory.id,
@@ -21,19 +18,7 @@ export const ButtonSendData = () => {
         })),
       };
       try {
-        const response = await fetch(
-          `${baseUrl}/api/pmi/saveCategoryProductsOrder`,
-          {
-            method: "POST",
-            body: JSON.stringify(dataToSave),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const json = await response.json();
-        if (Object.keys(json).includes("error"))
-          console.log("ha habido un error");
+        const response = await BffHttpService.saveCategoryProductsOrer(dataToSave);
       } catch (error) {}
     };
     saveProductsOrder();

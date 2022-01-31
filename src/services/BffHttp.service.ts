@@ -51,6 +51,15 @@ export class BffHttpService {
         }
     }
 
+    public static async saveCategoryProductsOrer (data: any): Promise<any> {
+        try {
+            const response = await this.request(`pmi/saveCategoryProductsOrder`, 'POST', data);
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 }
 
 type HttpMethodType = 'GET' | 'POST' | 'DELETE' | 'DISPATCH';
